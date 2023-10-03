@@ -1,0 +1,20 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TailwindCSS Typography Testing</title>
+
+  <link rel="stylesheet" href="css/main.css">
+  <script src="htmx-1.9.5.js"></script>
+
+</head>
+<body>
+
+  <header class="bg-slate-200 mb-10"><h1 class="text-lg p-6">Hello from index.html</h1></header>
+
+  <article class="prose lg:prose-xl" hx-get="/sample.html" hx-trigger="load" hx-poll="5s">
+    Loading...
+  </article>
+  
+</body>
+</html>
