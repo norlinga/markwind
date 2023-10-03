@@ -194,6 +194,11 @@ and place the following in `app.rb`:
 
 ```ruby
 require 'sinatra'
+
+get '/' do
+  @random = rand(1..999_000)
+  erb :index
+end
 ```
 
 This will serve assests from public by default, meaning that we don't need to do anything more to get .html, .css, and .js files to the browser.
@@ -224,7 +229,7 @@ Replace the contents of the generated `tailwind.config.js` file with:
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
-    './public/index.html',
+    './views/index.erb',
   ],
   theme: {
     extend: {
@@ -270,17 +275,19 @@ Create the file `index.html` in `./public` and replace its contents with:
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="refresh" content="5">
+
   <title>TailwindCSS Typography Testing</title>
 
-  <link rel="stylesheet" href="css/main.css">
-  <script src="htmx-1.9.5.js"></script>
+  <link rel="stylesheet" href="/css/main.css?v=<%= @random %>">
+  <script src="/htmx-1.9.5.js"></script>
 
 </head>
 <body>
 
   <header class="bg-slate-200 mb-10"><h1 class="text-lg p-6">Hello from index.html</h1></header>
 
-  <article class="prose lg:prose-xl" hx-get="sample.html" hx-trigger="load" hx-poll="5s">
+  <article class="prose lg:prose-xl" hx-get="/sample.html?v=<%= @random %>" hx-trigger="load">
     Loading...
   </article>
   
