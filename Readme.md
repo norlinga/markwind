@@ -261,6 +261,7 @@ tailwind: npx tailwindcss -i ./css/main.css -o ./public/css/main.css --watch
 Configured as shown, Tailwind will be running through NPX in a "watch" mode, which will cause it to re-run any time the config file is changed, or any file (or file pattern) that's defined in `content:` changes.
 Running `Foreman` will generate a new CSS file in `./public/css` named `main.css`.
 
+Save the HTMX library to `./public`.
 Our last step is to create the HTMX-powered HTML file that will show us our `prose` styles.
 Create the file `index.html` in `./public` and replace its contents with:
 
@@ -272,7 +273,7 @@ Create the file `index.html` in `./public` and replace its contents with:
   <title>TailwindCSS Typography Testing</title>
 
   <link rel="stylesheet" href="css/main.css">
-  <script src="/htmx-1.9.5.js"></script>
+  <script src="htmx-1.9.5.js"></script>
 
 </head>
 <body>
@@ -287,6 +288,7 @@ Create the file `index.html` in `./public` and replace its contents with:
 </html>
 ```
 
+Pay special attention to making sure the `src` value in the script tag is the same as the saved version of HTMX you've saved into `./public`.
 Restart `Foreman` and direct your browser to [localhost:9292](localhost:9292).
-You page will show two <h1> sections - one with a default dark font.
-The `prose` wrapped <h1> coming from `sample.md` will have a default style applied, carrying a red font color.
+You page will show two `<h1>` sections - one with a default dark font.
+The `prose` wrapped `<h1>` coming from `sample.md` will have a default style applied, carrying a red font color.
