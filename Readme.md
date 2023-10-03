@@ -220,7 +220,7 @@ npx tailwindcss init
 
 Replace the contents of the generated `tailwind.config.js` file with:
 
-```json
+```js
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
