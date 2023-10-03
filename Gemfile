@@ -5,5 +5,6 @@ source "https://rubygems.org"
 gem "sinatra"
 gem "kramdown"
 
+gem 'webrick'
 gem 'guard'
 gem 'guard-shell'
