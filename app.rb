@@ -1,6 +1,7 @@
 require 'sinatra'
+require 'securerandom'
 
 get '/' do
-  @random = rand(1..999_000)
+  @random = SecureRandom::uuid
   erb :index
 end
