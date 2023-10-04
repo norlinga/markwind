@@ -49,6 +49,7 @@ GEM
       tilt (~> 2.0)
     thor (1.2.2)
     tilt (2.3.0)
+    webrick (1.8.1)
 
 PLATFORMS
   x86_64-linux
@@ -58,6 +59,7 @@ DEPENDENCIES
   guard-shell
   kramdown
   sinatra
+  webrick
 
 BUNDLED WITH
    2.4.10

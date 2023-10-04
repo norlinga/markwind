@@ -1,0 +1,43 @@
+version: '3.9'
+
+x-app: &app
+  build:
+    context: .
+    dockerfile: ./mise/containers/app/Dockerfile
+  stdin_open: true
+  tty: true
+  user: root
+  volumes:
+    - .:/app
+    - gem_cache:/usr/local/bundle/gems
+    - node_modules:/app/node_modules
+
+services:
+
+  markdown:
+    <<: *app
+    build:
+      context: .
+      dockerfile: ./mise/containers/app/Dockerfile
+    command: bundle exec guard
+  
+  sinatra:
+    <<: *app
+    build:
+      context: .
+      dockerfile: ./mise/containers/app/Dockerfile
+    command:  ["bundle", "exec", "rackup", "--host", "0.0.0.0", "-p", "4567"]
+    ports:
+      - "4567:4567"
+  
+    
+  tailwind:
+    <<: *app
+    build:
+      context: .
+      dockerfile: ./mise/containers/app/Dockerfile
+    command: ["npx","tailwindcss", "-i", "./css/main.css", "-o", "./public/css/main.css","--watch"]
+
+volumes:
+  gem_cache:
+  node_modules:
