@@ -20,8 +20,6 @@ services:
       context: .
       dockerfile: ./mise/containers/app/Dockerfile
     command: bundle exec guard
-    ports:
-      - "9292:9292"
   
   sinatra:
     <<: *app
@@ -38,7 +36,7 @@ services:
     build:
       context: .
       dockerfile: ./mise/containers/app/Dockerfile
-    command: npx tailwindcss -i ./css/main.css -o ./public/css/main.css --watch
+    command: ["npx","tailwindcss", "-i", "./css/main.css", "-o", "./public/css/main.css","--watch"]
 
 volumes:
   gem_cache:
